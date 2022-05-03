@@ -1,4 +1,8 @@
 # ⚙️Frontend-React⚙️
+### ✏️Members✏️
+📙 [김주은](https://github.com/JJuniess) 
+📗 [백지수](https://github.com/jisubaek)
+📘 [이재윤](https://github.com/planetyoon)
 
 ### 💡Intro
   : 저전력 통신 기법인 LoRa를 기반으로, IoT센서 데이터를 처리하는 웹페이지를 만듭니다.
