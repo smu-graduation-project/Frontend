@@ -30,6 +30,12 @@
 export default App;*/
 
 /*global kakao*/ 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import Button from '@mui/material/Button';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
@@ -135,94 +141,96 @@ export default function MiniDrawer() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: 'none' }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Lora IoT Management System
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-
-        <List>
-          {['USER1','Main', 'Search', 'Site1'].map((text, index) => (
-            <ListItemButton
-              key={text}
+    <Router>
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+        <AppBar position="fixed" open={open}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
               sx={{
-                minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
-                px: 2.5,
+                marginRight: 5,
+                ...(open && { display: 'none' }),
               }}
             >
-              <ListItemIcon
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" noWrap component="div">
+              Lora IoT Management System
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Drawer variant="permanent" open={open}>
+          <DrawerHeader>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            </IconButton>
+          </DrawerHeader>
+          <Divider />
+
+          <List>
+            {[<Link to="/">USER1</Link>,<Link to="/">Main</Link>,<Link to="/">Site1</Link>].map((text, index) => (
+              <ListItemButton
+                key={text}
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : 'auto',
-                  justifyContent: 'center',
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
                 }}
               >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  
+                  {index === 0 ? <AccountCircleIcon /> : null}
+                  {index === 1 ? < HomeIcon/> : null}
+                  {index === 2 ? < SearchIcon/> : null}
+                  {index === 3 ? < LocationOnIcon/> : null}
+                </ListItemIcon>
                 
-                {index === 0 ? <AccountCircleIcon /> : null}
-                {index === 1 ? < HomeIcon/> : null}
-                {index === 2 ? < SearchIcon/> : null}
-                {index === 3 ? < LocationOnIcon/> : null}
-              </ListItemIcon>
-              
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          ))}
-        </List>
+                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            ))}
+          </List>
 
-        <Divider />
-         
-        <List>
-          {['Setting'].map((text, index) => (
-            <ListItemButton
-              key={text}
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
+          <Divider />
+          
+          <List>
+            {[<Link to="/">Setting</Link>].map((text, index) => (
+              <ListItemButton
+                key={text}
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : 'auto',
-                  justifyContent: 'center',
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
                 }}
               >
-                {index === 0 ? <SettingsIcon /> : null}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          ))}
-        </List>
-      </Drawer>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {index === 0 ? <SettingsIcon /> : null}
+                </ListItemIcon>
+                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            ))}
+          </List>
+        </Drawer>
 
-      <Box component="main" sx={{ flexGrow: 1, p: 6, m: 6, }}>
-        <Map />
+        <Box component="main" sx={{ flexGrow: 1, p: 6, m: 6, }}>
+          <Map />
+        </Box>
       </Box>
-    </Box>
+    </Router>
   );
 }

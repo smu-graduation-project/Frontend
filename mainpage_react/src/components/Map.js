@@ -1,4 +1,5 @@
 /*global kakao*/ 
+import { borderRadius } from '@mui/system';
 import React, { useEffect } from 'react';
 
 
@@ -27,7 +28,8 @@ const Map = () => {
                 id="map" style={{
                     width:"600px",
                     height:"550px",
-                    right: "65px"
+                    right: "65px",
+                    borderRadius: "30px"
                     }}>  
             </div>
         </div>
