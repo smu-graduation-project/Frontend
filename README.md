@@ -21,7 +21,7 @@
           * [페이지명]-[수정사항]
           * 예시) 메인페이지-카카오맵API구현
 
-5. ```git push -u origin [branch명]```
+5. ```git push origin [branch명]```
 6. smu-graduation-project의 Frontend-React 레포지토리로 ```Pull Request``` 전송합니다.
 7. kakao talk을 통해 Pull Request 를 알립니다.
 
