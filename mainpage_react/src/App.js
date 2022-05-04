@@ -34,13 +34,22 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Routes,
   Link
 } from "react-router-dom";
 import Button from '@mui/material/Button';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import Map from './components/Map';
+
+import Loginpage from "./components/Loginpage/loginpage"
+import Mainpage from "./components/Mainpage/mainpage"
+import Map from './components/Mainpage/Map';
+import Site from "./components/Site/site1"
+import Battery from "./components/Battery/battery1"
+import Node from "./components/Node/node1"
+import Setting from "./components/Setting/setting"
+
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -128,7 +137,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer() {
+function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -141,7 +150,6 @@ export default function MiniDrawer() {
   };
 
   return (
-    <Router>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="fixed" open={open}>
@@ -172,7 +180,7 @@ export default function MiniDrawer() {
           <Divider />
 
           <List>
-            {[<Link to="/">USER1</Link>,<Link to="/">Main</Link>,<Link to="/">Site1</Link>].map((text, index) => (
+            {[<Link to="/login">USER1</Link>,<Link to="/">Main</Link>,<Link to="/site1">Site1</Link>].map((text, index) => (
               <ListItemButton
                 key={text}
                 sx={{
@@ -231,6 +239,24 @@ export default function MiniDrawer() {
           <Map />
         </Box>
       </Box>
+  );
+}
+
+export default function App() {
+  MiniDrawer()
+
+  return (
+    <Router>
+      <div>
+        <Routes>
+          <Route exact path="/" element={<Mainpage/>}/>
+          <Route path="/login" element={<Loginpage/>}/>
+          <Route path="/site1" element={<Site/>}/>
+          <Route path="/battery1" element={<Battery/>}/>
+          <Route path="/node1" element={<Node/>}/>
+          <Route path="/setting" element={<Setting/>}/>
+        </Routes>
+      </div>
     </Router>
   );
 }
