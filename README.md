@@ -9,7 +9,8 @@
 
 ### 💡GitHub 협업규칙
 #### 💎Branch
->main 브랜치를 통해 단일화 합니다.
+>* component별로 브랜치를 관리합니다.
+>* main 브랜치에 구조를 통일시킵니다.
 
 #### 💎PULL할때
 >1. ```Fetch Upstream``` 을 통해 해당 레포지토리를 최신화합니다.
