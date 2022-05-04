@@ -27,7 +27,7 @@
 >          * 예시) 메인페이지-카카오맵API구현
 >
 >5. ```git push origin [branch명]```
->6. smu-graduation-project의 Frontend-React 레포지토리로 ```Pull Request``` 전송합니다.
+>6. smu-graduation-project의 Frontend-React 레포지토리로 반드시 ```해당하는 브랜치```에  ```Pull Request``` 전송합니다.
 >7. kakao talk을 통해 Pull Request 를 알립니다.
 
-          🌸 PUSH, Pull Request 알림을 통해 코드꼬임을 방지합니다. 🌸
+          🌸 PUSH, Pull Request 카톡알림을 통해 코드꼬임을 방지합니다. 🌸
