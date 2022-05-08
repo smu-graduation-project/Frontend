@@ -21,6 +21,15 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SearchIcon from '@mui/icons-material/Search';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+
+import Deposits from './Deposits.js';
+import Orders from './Orders';
+import Chart1 from './Chart_temperature';
+import Chart2 from './Chart_electric_power';
+import Chart3 from './Chart_voltage';
+
 
 const drawerWidth = 240;
 
@@ -188,7 +197,85 @@ const MiniDrawer = (props) => {
           </Drawer>
   
           <Box component="main" sx={{ flexGrow: 1, p: 6, m: 6, }}>
-          <div> 노드 세부 페이지 </div>
+
+           {/* Recent Deposits */}
+             <Grid item xs={12} md={4} lg={3}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'row',
+                    height: 400,
+                  }}
+                  >
+                    <Paper
+                    sx={{
+                      p: 2,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      height: 350,
+                    }}
+                  >
+                      <Deposits />
+                    </Paper>
+                    <div>　</div>
+                    <Paper
+                    sx={{
+                      p: 2,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      height: 350,
+                    }}
+                  >
+                      <Orders />
+                    </Paper>
+                  
+                </Paper>
+              </Grid>
+              <div>　</div>
+              
+              <Grid item xs={12} md={8} lg={9}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                  }}
+                >
+                  <Chart1 />
+                </Paper>
+              </Grid>
+              <div>　</div>
+
+              <Grid item xs={12} md={8} lg={9}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                  }}
+                >
+                  <Chart2 />
+                </Paper>
+              </Grid>
+              <div>　</div>
+
+              <Grid item xs={12} md={8} lg={9}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                  }}
+                >
+                  <Chart3 />
+                </Paper>
+              </Grid>
+              <div>　</div>
+
           </Box>
         </Box>
     );
