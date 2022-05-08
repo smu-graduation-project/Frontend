@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Routes,
-    Link
-  } from "react-router-dom";
-import Button from '@mui/material/Button';
+import { Link } from "react-router-dom";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -196,9 +189,8 @@ const MiniDrawer = (props) => {
           </Drawer>
   
           <Box component="main" sx={{ flexGrow: 1, p: 6, m: 6, }}>
-        
+          <Map />
           </Box>
-            <Map />
         </Box>
     );
 }

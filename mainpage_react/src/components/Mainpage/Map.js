@@ -1,3 +1,34 @@
+/*function App() {
+  return (
+    <header>
+      <div>
+        <div className="div-right">
+          <h1>Lora IoT Management System</h1>
+          <div className='div-mapbox'>
+            <Map />;
+          </div>
+        </div>
+
+        <div className="div-left">
+          <ul>
+              <li><Button variant="contained" startIcon={<AccountCircleIcon></AccountCircleIcon>}>USER A</Button></li>
+              <li><Button variant="contained" startIcon={<HomeIcon></HomeIcon>}>MAIN</Button></li>
+              <li><Button variant="contained" startIcon={<LocationOnIcon></LocationOnIcon>}>SITE1</Button></li>
+              <li><Button variant="contained" startIcon={<LocationOnIcon></LocationOnIcon>}>SITE2</Button></li>
+              <li><Button variant="contained" startIcon={<LocationOnIcon></LocationOnIcon>}>SITE3</Button></li>
+              <li><Button variant="contained" startIcon={<LocationOnIcon></LocationOnIcon>}>SITE4</Button></li>
+              <li><Button variant="contained" startIcon={<LocationOnIcon></LocationOnIcon>}>SITE5</Button></li>
+              <li><Button variant="contained" startIcon={<LocationOnIcon></LocationOnIcon>}>SITE6</Button></li>
+          </ul>
+        </div>
+        
+
+      </div>
+    </header>
+  );
+}
+export default App;*/
+
 /*global kakao*/ 
 import { borderRadius } from '@mui/system';
 import React, { useEffect } from 'react';
