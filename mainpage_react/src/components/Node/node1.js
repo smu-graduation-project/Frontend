@@ -24,8 +24,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 
-import Deposits from './Deposits.js';
-import Orders from './Orders';
+import Details_img from './Details_img.js';
+import Details from './Details';
 import Chart1 from './Chart_temperature';
 import Chart2 from './Chart_electric_power';
 import Chart3 from './Chart_voltage';
@@ -216,7 +216,7 @@ const MiniDrawer = (props) => {
                       height: 350,
                     }}
                   >
-                      <Deposits />
+                      <Details_img />
                     </Paper>
                     <div>　</div>
                     <Paper
@@ -227,7 +227,7 @@ const MiniDrawer = (props) => {
                       height: 350,
                     }}
                   >
-                      <Orders />
+                      <Details />
                     </Paper>
                   
                 </Paper>
