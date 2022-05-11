@@ -10,9 +10,9 @@ const api = axios.create({
 })
 
 export const formerApi ={
-    temperature: () => api.get("https://api/formerData/temperature"),
-    electicCurreunt: () => api.get("https://api/formerData/electricCurrent"),
-    voltage: () => api.get("https://api/formerData/voltage")
+    temperature: () => api.get("api/formerData/temperature"),
+    electicCurreunt: () => api.get("api/formerData/electricCurrent"),
+    voltage: () => api.get("api/formerData/voltage")
 }
 
 /*

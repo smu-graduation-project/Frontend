@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
@@ -26,9 +26,11 @@ import Paper from '@mui/material/Paper';
 
 import Details_img from './Details_img.js';
 import Details from './Details';
-import Chart1 from './Chart_temperature';
+import Chart1 from './Chart_test';
 import Chart2 from './Chart_electric_power';
 import Chart3 from './Chart_voltage';
+
+import axios from 'axios';
 
 
 const drawerWidth = 240;
@@ -99,6 +101,16 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const MiniDrawer = (props) => {
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+      axios({
+        method: 'GET',
+        url:'api/formerData/temperature'
+      }).then(response => setPosts(response.data))
+    })
+
+
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
   
@@ -111,6 +123,23 @@ const MiniDrawer = (props) => {
     };
   
     return (
+      <div>
+        <ul>
+          {posts.map(post => (
+            <li key = {post.date}>
+              <div>{post.maxTemperature}</div>
+              <div>{post.minTemperature}</div>
+              <div>{post.maxelectircCurrent}</div>
+              <div>{post.minelectricCurreunt}</div>
+              <div>{post.maxvoltage}</div>
+              <div>{post.minvoltage}</div>
+
+
+            </li>
+          ))}
+        </ul>
+
+
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <AppBar position="fixed" open={open}>
@@ -278,6 +307,7 @@ const MiniDrawer = (props) => {
 
           </Box>
         </Box>
+      </div>
     );
 }
 
