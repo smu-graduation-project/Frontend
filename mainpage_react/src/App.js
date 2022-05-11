@@ -15,7 +15,7 @@ import Node1 from "./components/Node/node1"
 import Node2 from "./components/Node/node2"
 import Setting from "./components/Setting/setting"
 
-import Test from "./components/Node/axios_test"
+import A from "./components/Node/a"
 
 
 export default function App() {
@@ -30,7 +30,8 @@ export default function App() {
           <Route path="/node1" element={<Node1/>}/>
           <Route path="/node2" element={<Node2/>}/>
           <Route path="/setting" element={<Setting/>}/>
-          <Route path="/test" element={<Test/>}/>
+          <Route path="/a" element={<A/>}/>
+          
         </Routes>
       </div>
     </Router>
