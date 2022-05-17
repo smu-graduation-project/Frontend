@@ -101,16 +101,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const MiniDrawer = (props) => {
-    const [posts, setPosts] = useState([]);
-
-    useEffect(() => {
-      axios({
-        method: 'GET',
-        url:'api/formerData/temperature'
-      }).then(response => setPosts(response.data))
-    })
-
-
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
   
@@ -124,22 +114,6 @@ const MiniDrawer = (props) => {
   
     return (
       <div>
-        <ul>
-          {posts.map(post => (
-            <li key = {post.date}>
-              <div>{post.maxTemperature}</div>
-              <div>{post.minTemperature}</div>
-              <div>{post.maxelectircCurrent}</div>
-              <div>{post.minelectricCurreunt}</div>
-              <div>{post.maxvoltage}</div>
-              <div>{post.minvoltage}</div>
-
-
-            </li>
-          ))}
-        </ul>
-
-
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <AppBar position="fixed" open={open}>
