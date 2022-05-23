@@ -7,7 +7,7 @@ import {
   Link
 } from "react-router-dom";
 
-import Loginpage from "./components/Loginpage/loginpage"
+import Loginpage from "./components/Loginpage/loginform"
 import Mainpage from "./components/Mainpage/mainpage"
 import Site from "./components/Site/site1"
 import Battery from "./components/Battery/battery1"
