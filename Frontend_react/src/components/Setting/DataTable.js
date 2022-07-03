@@ -1,5 +1,7 @@
 import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
+import ControllableStates from './AuthrDropdown';
+import Button from '@mui/material/Button';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
@@ -14,11 +16,14 @@ const columns = [
   {
     field: 'authority',
     headerName: 'Authority',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    
+    width: 300,
+    renderCell: (params) => (
+      <strong>
+        <ControllableStates />
+      </strong>
+    ),
   },
+
 ];
 
 const rows = [
