@@ -22,6 +22,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SearchIcon from '@mui/icons-material/Search';
+import AlertBx from './AlertBx';
+import { CenterFocusStrong } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
@@ -188,8 +190,20 @@ const MiniDrawer = (props) => {
             </List>
           </Drawer>
   
-          <Box component="main" sx={{ flexGrow: 1, p: 6, m: 6, }}>
-          <Map />
+          <Box component="main"
+            sx={{
+                flexGrow: 1,
+                p: 6,
+                m: 6,
+                
+                }}>
+              <Map />
+          </Box>
+          <Box component="alert"
+            sx={{flexGrow: 1,
+              p: 6,
+              m: 6,}}>
+            <AlertBx />
           </Box>
         </Box>
     );
