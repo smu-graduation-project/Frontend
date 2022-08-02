@@ -9,8 +9,8 @@ import {
 
 import Loginpage from "./components/Loginpage/loginpage"
 import Mainpage from "./components/Mainpage/mainpage"
-import Site from "./components/Site/site1"
-import Battery from "./components/Battery/battery1"
+import Site1 from "./components/Site/site1_main"
+import Site1_battery1 from "./components/Battery/Site1_battery/battery1_layout"
 import Node1 from "./components/Node/node1"
 import Node2 from "./components/Node/node2"
 import Setting from "./components/Setting/Setting_main"
@@ -29,10 +29,10 @@ export default function App() {
         <Routes>
           <Route exact path="/" element={<Mainpage/>}/>
           <Route path="/login" element={<Loginpage/>}/>
-          <Route path="/site1" element={<Site/>}/>
-          <Route path="/battery1" element={<Battery/>}/>
-          <Route path="/node1" element={<Node1/>}/>
-          <Route path="/node2" element={<Node2/>}/>
+          <Route path="/site1" element={<Site1/>}/>
+          <Route path="/site1/battery1" element={<Site1_battery1/>}/>
+          <Route path="/site1/node1" element={<Node1/>}/>
+          <Route path="/site1/node2" element={<Node2/>}/>
 
           <Route path="/setting" element={<Setting/>}/>
           <Route path="/setting/settingpermission" element={<SettingPermission/>}/>
