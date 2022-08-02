@@ -30,6 +30,7 @@
 export default App;*/
 
 /*global kakao*/ 
+// eslint-disable-next-line
 import { borderRadius } from '@mui/system';
 import React, { useEffect } from 'react';
 
@@ -60,7 +61,7 @@ const Map = () => {
                     width:"600px",
                     height:"550px",
                     right: "65px",
-                    borderRadius: "30px"
+                    borderRadius: "30px",
                     }}>  
             </div>
         </div>

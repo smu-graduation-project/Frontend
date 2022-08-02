@@ -11,8 +11,8 @@ import Loginpage from "./components/Loginpage/loginform"
 import Mainpage from "./components/Mainpage/mainpage"
 import Site from "./components/Site/site1"
 import Battery from "./components/Battery/battery1"
-import Node from "./components/Node/node1"
 import Setting from "./components/Setting/setting"
+import Nodesearch from "./components/NodeSearch/nodesearch"
 
 export default function App() {
   return (
@@ -23,8 +23,8 @@ export default function App() {
           <Route path="/login" element={<Loginpage/>}/>
           <Route path="/site1" element={<Site/>}/>
           <Route path="/battery1" element={<Battery/>}/>
-          <Route path="/node1" element={<Node/>}/>
           <Route path="/setting" element={<Setting/>}/>
+          <Route path="/nodesearch" element={<Nodesearch/>}/>
         </Routes>
       </div>
     </Router>
