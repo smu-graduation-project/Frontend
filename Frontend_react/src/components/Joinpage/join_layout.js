@@ -22,13 +22,7 @@ import ListItemText from '@mui/material/ListItemText';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SearchIcon from '@mui/icons-material/Search';
 
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import ListSubheader from '@mui/material/ListSubheader';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-
-import Nodepost from './NodeAdd_post';
+import Join from './join';
 
 const drawerWidth = 240;
 
@@ -196,19 +190,9 @@ const MiniDrawer = (props) => {
           </Drawer>
   
           <Box component="main" sx={{ flexGrow: 1, p: 6, m: 6, }}>
-          <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 500,
-                  }}
-                >
-                  <Nodepost></Nodepost>  
-                </Paper>
-              </Grid>            
+            <Join></Join>
           </Box>
+          
         </Box>
     );
 }

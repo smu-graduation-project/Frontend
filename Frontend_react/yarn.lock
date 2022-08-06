@@ -5340,7 +5340,7 @@
   "resolved" "https://registry.npmjs.org/he/-/he-1.2.0.tgz"
   "version" "1.2.0"
 
-"history@^5.2.0":
+"history@^5.0.3":
   "integrity" "sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ=="
   "resolved" "https://registry.npmjs.org/history/-/history-5.3.0.tgz"
   "version" "5.3.0"
@@ -8235,20 +8235,19 @@
     "lodash" "^4.17.21"
     "resize-observer-polyfill" "^1.5.1"
 
-"react-router-dom@^6.3.0":
-  "integrity" "sha512-uaJj7LKytRxZNQV8+RbzJWnJ8K2nPsOOEuX7aQstlMZKQT0164C+X2w6bnkqU3sjtLvpd5ojrezAyfZ1+0sStw=="
-  "resolved" "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.3.0.tgz"
-  "version" "6.3.0"
+"react-router-dom@^6.0.0":
+  "integrity" "sha512-bPXyYipf0zu6K7mHSEmNO5YqLKq2q9N+Dsahw9Xh3oq1IirsI3vbnIYcVWin6A0zWyHmKhMGoV7Gr0j0kcuVFg=="
+  "resolved" "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.0.0.tgz"
+  "version" "6.0.0"
   dependencies:
-    "history" "^5.2.0"
-    "react-router" "6.3.0"
+    "react-router" "6.0.0"
 
-"react-router@6.3.0":
-  "integrity" "sha512-7Wh1DzVQ+tlFjkeo+ujvjSqSJmkt1+8JO+T5xklPlgrh70y7ogx75ODRW0ThWhY7S+6yEDks8TYrtQe/aoboBQ=="
-  "resolved" "https://registry.npmjs.org/react-router/-/react-router-6.3.0.tgz"
-  "version" "6.3.0"
+"react-router@6.0.0":
+  "integrity" "sha512-FcTRCihYZvERMNbG54D9+Wkv2cj/OtoxNlA/87D7vxKYlmSmbF9J9XChI9Is44j/behEiOhbovgVZBhKQn+wgA=="
+  "resolved" "https://registry.npmjs.org/react-router/-/react-router-6.0.0.tgz"
+  "version" "6.0.0"
   dependencies:
-    "history" "^5.2.0"
+    "history" "^5.0.3"
 
 "react-scripts@5.0.0":
   "integrity" "sha512-3i0L2CyIlROz7mxETEdfif6Sfhh9Lfpzi10CtcGs1emDQStmZfWjJbAIMtRD0opVUjQuFWqHZyRZ9PPzKCFxWg=="
