@@ -9,10 +9,20 @@ import {
 
 import Loginpage from "./components/Loginpage/loginpage"
 import Mainpage from "./components/Mainpage/mainpage"
+import Joinpage from "./components/Joinpage/join_layout"
 import Site1 from "./components/Site/site1_main"
 import Site1_battery1 from "./components/Battery/Site1_battery/battery1_layout"
-import Node1 from "./components/Node/node1"
-import Node2 from "./components/Node/node2"
+import Site1_battery2 from "./components/Battery/Site1_battery/battery1_layout"
+import Site1_battery3 from "./components/Battery/Site1_battery/battery1_layout"
+import Site1_battery4 from "./components/Battery/Site1_battery/battery1_layout"
+import Site1_node1 from "./components/Node/node1"
+import Site1_node2 from "./components/Node/node2"
+import Site1_node3 from "./components/Node/node2"
+import Site1_node4 from "./components/Node/node2"
+import FixAddSite from "./components/Setting/SiteAdd"
+import FixAddBattery from "./components/Setting/BatteryAdd"
+import FixAddNode from "./components/Setting/NodeAdd"
+
 import Setting from "./components/Setting/Setting_main"
 import SettingPermission from "./components/Setting/SettingPermission"
 import AddSite from "./components/Setting/SiteAdd"
@@ -31,8 +41,16 @@ export default function App() {
           <Route path="/login" element={<Loginpage/>}/>
           <Route path="/site1" element={<Site1/>}/>
           <Route path="/site1/battery1" element={<Site1_battery1/>}/>
-          <Route path="/site1/node1" element={<Node1/>}/>
-          <Route path="/site1/node2" element={<Node2/>}/>
+          <Route path="/site1/battery2" element={<Site1_battery2/>}/>
+          <Route path="/site1/battery3" element={<Site1_battery3/>}/>
+          <Route path="/site1/battery4" element={<Site1_battery4/>}/>
+          <Route path="/site1/node1" element={<Site1_node1/>}/>
+          <Route path="/site1/node2" element={<Site1_node2/>}/>
+          <Route path="/site1/node3" element={<Site1_node3/>}/>
+          <Route path="/site1/node4" element={<Site1_node4/>}/>
+          <Route path="/setting/addsite" element={<FixAddSite/>}/>
+          <Route path="/setting/addbattery" element={<FixAddBattery/>}/>
+          <Route path="/setting/addnode" element={<FixAddNode/>}/>
 
           <Route path="/setting" element={<Setting/>}/>
           <Route path="/setting/settingpermission" element={<SettingPermission/>}/>
@@ -41,6 +59,7 @@ export default function App() {
           <Route path="/setting/addnode" element={<AddNode/>}/>
 
           <Route path="/a" element={<A/>}/>
+          <Route path="/join" element={<Joinpage/>}/>
           
         </Routes>
       </div>
