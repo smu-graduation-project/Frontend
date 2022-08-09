@@ -90,6 +90,7 @@ export default function Site1_battery() {
               <Button variant="contained">Battery 정보</Button>
               <Button variant="outlined">Battery 수정</Button>
               <Button href='/setting/addnode' variant="outlined">Node 추가</Button>
+              <Button variant="outlined">Node 검색</Button>
             </Stack>
           </Container>
         </Box>
