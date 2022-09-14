@@ -29,7 +29,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
 import Sitemap from './SiteAdd_map.js';
-
+import Sitepost from './SiteAdd_post.js';
 
 const drawerWidth = 240;
 
@@ -210,31 +210,7 @@ const MiniDrawer = (props) => {
                     height: 400,
                   }}
                 >
-                  <List
-                    sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-                    component="nav"
-                    aria-labelledby="nested-list-subheader"
-                    subheader={
-                      <ListSubheader component="div" id="nested-list-subheader">
-                        Add Site
-                      </ListSubheader>
-                    }
-                    >
-                    <ListItemButton>
-                      <Button>　Site 명　</Button>
-                        <TextField
-                          required
-                          id="outlined-required"
-                          label="Required"
-                          defaultValue=""
-                        />
-                    </ListItemButton>
-
-                    <ListItemButton>
-                        <Button>Site 주소　</Button>
-                        <Sitemap></Sitemap>
-                    </ListItemButton>
-                  </List>
+                  <Sitepost></Sitepost>
                 </Paper>
               </Grid>
           </Box>
