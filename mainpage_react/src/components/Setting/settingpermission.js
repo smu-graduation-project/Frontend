@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
@@ -23,8 +23,8 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import SearchIcon from '@mui/icons-material/Search';
 import DataTable from 'react-data-table-component';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen,faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { Button,TextField, InputLabel, MenuItem, Select, FormControl, FormHelperText, SelectChangeEvent } from "@mui/material";
+import { faPen, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { Button, TextField, InputLabel, MenuItem, Select, FormControl, FormHelperText, SelectChangeEvent } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 import UserList from './membersearch';
@@ -102,227 +102,186 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 
 
-const Tables = () => {
-
-  const columns = [
-    {
-      name: 'name',
-      selector: row => row.name,
-      sortable: true,
-    },
-    {
-      name: 'Id',
-      selector: row => row.Id,
-      sortable: true,
-    },
-    {
-      name: 'Contact',
-      selector: row => row.contact,
-      sortable: true,
-    },
-    {
-      name: 'EmployeeNum',
-      selector: row => row.employeenum,
-      sortable: true,
-    },
-    {
-      name: 'Authority',
-      selector: row => row.authority
-      // 
-      // selector: row => row.authority,
-      // sortable: true,
-    },
-    {
-      name: "Action",
-      sortable: false,
-      selector: "null",
-      cell: (d) => [
-        <FontAwesomeIcon
-          // key={d.title}
-          // onClick={handleClick.bind(this, d.title)}
-          icon={faPen} />,
-        <FontAwesomeIcon
-          // key={d.title}
-          // onClick={handleClick.bind(this, d.title)}
-          icon={faTrashCan} />
-      ]
-    }
-  ];
-
-  const data = [
-    {
-      id: 1,
-      name: 'marko',
-      Id: 1,
-      contact: "010-0000-0000",
-      employeenum: 1111,
-      authority: 'admin'
-    },
-    {
-      id: 2,
-      name: 'stark',
-      Id: 2,
-      contact: "010-0000-0000",
-      employeenum: 2222
-    },
-    {
-      id: 3,
-      name: 'tony',
-      Id: 3,
-      contact: "010-0000-0000",
-      employeenum: 3333
-    },
-    {
-      id: 4,
-      name: 'james',
-      Id: 4,
-      contact: "010-0000-0000",
-      employeenum: 4444
-    },
-
-
-  ]
-
-  return (
-    <DataTable
-      columns={columns}
-      data={data}
-      selectableRows />
-  )
-
-}
-
 
 
 
 const MiniDrawer = (props) => {
-    const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
-    const [users, setUsers] = useState([]);
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(false);
+  const [users, setUsers] = useState([]);
 
-    const handleDrawerOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleDrawerClose = () => {
-      setOpen(false);
-    };
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
 
-    const Users = () => {    
-      axios.get('/admin/api/v1/member/all') 
-      .then(response =>{
-        const employeeinfo = response.data.data.map((data)=>{
-          return{
-            username: 
-          }
-        })
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
+  const Users = () => {
+    axios.get('/admin/api/v1/member/all')
+      .then(response => {
+        const employeeinfo = response.data.data.map((data) => {
+          return {
+            num: data.userSeq,
+            employeenumber: data.employeeNumber,
+            phonenumber: data.phoneNumber,
+            realname: data.realname
+          };
+        });
+        setUsers([...employeeinfo]);
+        console.log(employeeinfo);
       });
 
-        return (
-          <>
-              <h1>Users</h1>
-              <UserList users={users}/>
-          </>
-      );
-    }
+  }
 
-    
-    useEffect(()=>{ Users() },[]);
-      console.log("반복중");
 
-    
+  useEffect(() => { Users() }, []);
+
+
+  const Tables = () => {
+
+    const columns = [
+      {
+        name: 'num',
+        selector: row => row.num,
+        sortable: true,
+      },
+      {
+        name: 'employeenumber',
+        selector: row => row.employeenumber,
+        sortable: true,
+      },
+      {
+        name: 'phonenumber',
+        selector: row => row.phonenumber,
+        sortable: true,
+      },
+      {
+        name: 'realname',
+        selector: row => row.realname,
+        sortable: true,
+      },
+      {
+        name: "Action",
+        sortable: false,
+        selector: "null",
+        cell: (d) => [
+          <FontAwesomeIcon
+            // key={d.title}
+            // onClick={handleClick.bind(this, d.title)}
+            icon={faPen} />,
+          <FontAwesomeIcon
+            // key={d.title}
+            // onClick={handleClick.bind(this, d.title)}
+            icon={faTrashCan} />
+        ]
+      }
+    ];
+
     return (
-        <Box sx={{ display: 'flex' }}>
-          <CssBaseline />
-          <AppBar position="fixed" open={open}>
-            <Toolbar>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                edge="start"
+      <DataTable
+        columns={columns}
+        data={users}
+        selectableRows />
+    )
+
+  }
+
+
+
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar position="fixed" open={open}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={{
+              marginRight: 5,
+              ...(open && { display: 'none' }),
+            }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap component="div">
+            Lora IoT Management System
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Drawer variant="permanent" open={open}>
+        <DrawerHeader>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+          </IconButton>
+        </DrawerHeader>
+        <Divider />
+
+        <List>
+          {[<Link to="/login">USER1</Link>, <Link to="/">Main</Link>, <Link to="/site1">Site1</Link>].map((text, index) => (
+            <ListItemButton
+              key={text}
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
                 sx={{
-                  marginRight: 5,
-                  ...(open && { display: 'none' }),
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
                 }}
               >
-                <MenuIcon />
-              </IconButton>
-              <Typography variant="h6" noWrap component="div">
-                Lora IoT Management System
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          <Drawer variant="permanent" open={open}>
-            <DrawerHeader>
-              <IconButton onClick={handleDrawerClose}>
-                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-              </IconButton>
-            </DrawerHeader>
-            <Divider />
-  
-            <List>
-              {[<Link to="/login">USER1</Link>,<Link to="/">Main</Link>,<Link to="/site1">Site1</Link>].map((text, index) => (
-                <ListItemButton
-                  key={text}
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    
-                    {index === 0 ? <AccountCircleIcon /> : null}
-                    {index === 1 ? < HomeIcon/> : null}
-                    {index === 2 ? < SearchIcon/> : null}
-                    {index === 3 ? < LocationOnIcon/> : null}
-                  </ListItemIcon>
-                  
-                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              ))}
-            </List>
-  
-            <Divider />
-            
-            <List>
-              {[<Link to="/setting">Setting</Link>].map((text, index) => (
-                <ListItemButton
-                  key={text}
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    {index === 0 ? <SettingsIcon /> : null}
-                  </ListItemIcon>
-                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              ))}
-            </List>
-          </Drawer>
-        
-          <Box component="main" sx={{ flexGrow: 1, p: 6, m: 6, }}>
-            <Tables/>
-          </Box>
-      
-        </Box>
-    );
+
+                {index === 0 ? <AccountCircleIcon /> : null}
+                {index === 1 ? < HomeIcon /> : null}
+                {index === 2 ? < SearchIcon /> : null}
+                {index === 3 ? < LocationOnIcon /> : null}
+              </ListItemIcon>
+
+              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          ))}
+        </List>
+
+        <Divider />
+
+        <List>
+          {[<Link to="/setting">Setting</Link>].map((text, index) => (
+            <ListItemButton
+              key={text}
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                {index === 0 ? <SettingsIcon /> : null}
+              </ListItemIcon>
+              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          ))}
+        </List>
+      </Drawer>
+
+      <Box component="main" sx={{ flexGrow: 1, p: 6, m: 6, }}>
+        <Tables />
+      </Box>
+
+    </Box>
+  );
 }
 
 export default MiniDrawer; 

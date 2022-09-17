@@ -38,8 +38,8 @@ const Login = () => {
           console.log(response);
           console.log("Successfully Logged in ");
           console.log(response.headers["authorization"]);
-          setCookie('refresh-token', response.headers["authorization-refresh"]);
-          setCookie('access-token', response.headers["authorization"]);
+          setCookie('refresh-token', response.headers["authorization-refresh"].substr(7));
+          setCookie('access-token', response.headers["authorization"].substr(7));
           // (onLoginSuccess);
           navigate('/');
         }
@@ -53,6 +53,11 @@ const Login = () => {
       })
 
   }
+
+  // //  headers: {
+  //   'Authorization': getCookie('access-token'),
+  //   'authorization-refresh': getCookie('refresh-token') 
+  // },
 
 
 
