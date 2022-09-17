@@ -13,6 +13,7 @@ import Site from "./components/Site/site1"
 import Battery from "./components/Battery/battery1"
 import Setting from "./components/Setting/setting"
 import Nodesearch from "./components/NodeSearch/nodesearch"
+import Settingpermission from "./components/Setting/settingpermission"
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/site1" element={<Site/>}/>
           <Route path="/battery1" element={<Battery/>}/>
           <Route path="/setting" element={<Setting/>}/>
+          <Route path="/settingpermission" element={<Settingpermission/>}/>
           <Route path="/nodesearch" element={<Nodesearch/>}/>
         </Routes>
       </div>

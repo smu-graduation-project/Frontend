@@ -13,6 +13,10 @@ import { cookies, setCookie, useCookies } from "react-cookie";
 import {onLoginSuccess,onSilentRefresh} from "../../components/Loginpage/jwtrefresh"
 axios.defaults.withCredentials = true;
 
+// axios.defaults.headers.common['Authorization'] = cookies.get('access-token')
+// axios.defaults.headers.common['authorization-refresh'] = cookies.get('refresh-token')
+
+
 const Login = () => {
   const navigate = useNavigate(); // <-- call hook to get navigate function
 
@@ -26,14 +30,16 @@ const Login = () => {
     const data = {}
     data.username = Id
     data.password = pw
+    
 
-    axios.post("/api/v1/login", data, { withCredentials: true })
+    axios.post("api/v1/login", data, { withCredentials: true })
       .then(function (response) {
         if (response.data.success == true) {
           console.log(response);
           console.log("Successfully Logged in ");
           console.log(response.headers["authorization"]);
           setCookie('refresh-token', response.headers["authorization-refresh"]);
+          setCookie('access-token', response.headers["authorization"]);
           // (onLoginSuccess);
           navigate('/');
         }
