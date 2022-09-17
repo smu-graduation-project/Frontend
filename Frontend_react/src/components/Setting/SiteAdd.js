@@ -207,7 +207,7 @@ const MiniDrawer = (props) => {
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 400,
+                    height: '',
                   }}
                 >
                   <Sitepost></Sitepost>

@@ -28,6 +28,8 @@ import ListSubheader from '@mui/material/ListSubheader';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
+import Batterypost from './BatteryAdd_post.js';
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -107,9 +109,9 @@ const MiniDrawer = (props) => {
       setOpen(false);
     };
   
-    const Input = styled('input')({
-      display: 'none',
-    });
+    const handleClick = () => {
+      setOpen(!open);
+    };
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -204,60 +206,10 @@ const MiniDrawer = (props) => {
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 400,
+                    height: '',
                   }}
                 >
-                  <List
-                    sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-                    component="nav"
-                    aria-labelledby="nested-list-subheader"
-                    subheader={
-                      <ListSubheader component="div" id="nested-list-subheader">
-                        Add Battery
-                      </ListSubheader>
-                    }
-                    >
-                    <ListItemButton>
-                      <Button>Battery 명　</Button>
-                        <TextField
-                          required
-                          id="outlined-required"
-                          label="Required"
-                          defaultValue=""
-                        />
-                    </ListItemButton>
-
-                    <ListItemButton>
-                      <Button>　　사진　　</Button>
-                        <label htmlFor="contained-button-file">
-                        <Input accept="image/*" id="contained-button-file" multiple type="file"/>
-                        <Button variant="contained" component="span" sx={{ marginLeft: "10%", marginRight: "auto" }}>
-                          Upload
-                        </Button>
-                        </label>
-                    </ListItemButton>
-
-                    <ListItemButton>
-                        <Button>　소속 공장　　</Button>
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Required"
-                            defaultValue=""
-                          />
-                    </ListItemButton>
-
-                    <ListItemButton>
-                        <Button>　　위치　　　</Button>
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Required"
-                            defaultValue=""
-                          />
-                    </ListItemButton>
-
-                  </List>
+                  <Batterypost></Batterypost>
                 </Paper>
               </Grid>
           </Box>

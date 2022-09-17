@@ -1,17 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-import Promise from 'promise-polyfill';
-if (!window.Promise) { window.Promise = Promise; }
+import {CookiesProvider} from "react-cookie";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  
+    <CookiesProvider>
+      <App />
+    </CookiesProvider>
+
+  
 );
 
 reportWebVitals();

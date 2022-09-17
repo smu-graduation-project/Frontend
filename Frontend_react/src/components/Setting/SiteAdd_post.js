@@ -31,7 +31,7 @@ const Boxs = styled(Box)`
   padding-bottom: 40px !important;
 `;
 
-function Register(props) {
+const SitePost = (props) => {
   const theme = createTheme();
   const [nodenameState, setnodenameState] = useState('');
   const [nodenameError, setnodenameError] = useState('');
@@ -45,18 +45,17 @@ function Register(props) {
     }
 
   const onhandlePost = async (data) => {
-    const { name, address } = data;
-    const postData = { name, address };
+    const { name, type, address, information } = data;
+    const postData = { name, type, address, information };
 
     // post
     await axios({
         method: 'post',
-        url: '/setting/addsite',
+        url: 'http://220.149.31.104:9090/api/product/site/add',
         headers: {'Content-Type': 'multipart/form-data'}
     })
       .then(function (response) {
         console.log(response, '성공');
-        history.push('/login');
       })
       .catch(function (err) {
         console.log(err);
@@ -70,9 +69,11 @@ function Register(props) {
     const data = new FormData(e.currentTarget);
     const joinData = {
       name: data.get('name'),
-      address: data.get('address')
+      type: data.get('type'),
+      address: data.get('address'),
+      information: data.get('information')
     };
-    const { name, address } = joinData;
+    const { name, type, address, information } = joinData;
 
     if (true) {
       onhandlePost(joinData);
@@ -97,6 +98,7 @@ function Register(props) {
           <Boxs component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <FormControl component="fieldset" variant="standard">
               <Grid container spacing={2}>
+                
                 <Grid item xs={12}>
                   <TextField
                     required
@@ -108,14 +110,37 @@ function Register(props) {
                     error={nodenameState !== '' || false}
                   />
                 </Grid>
-                <FormHelperTexts>{nodenameState}</FormHelperTexts>
+                <FormHelperTexts>{batteryError}</FormHelperTexts>
+
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="type"
+                    name="type"
+                    label="type"
+                    error={batteryError !== '' || false}
+                  />
+                </Grid>
+                <FormHelperTexts>{batteryError}</FormHelperTexts>
+
                 <Grid item xs={12}>
                   <Sitemap></Sitemap>
                 </Grid>
-
-                <p>{props.address}</p>
-
                 <FormHelperTexts>{siteError}</FormHelperTexts>
+
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="information"
+                    name="information"
+                    label="information"
+                    error={batteryError !== '' || false}
+                  />
+                </Grid>
+                <FormHelperTexts>{batteryError}</FormHelperTexts>
+
               </Grid>
               <Button
                 type="submit"
@@ -135,4 +160,4 @@ function Register(props) {
   );
 };
 
-export default Register;
+export default SitePost;

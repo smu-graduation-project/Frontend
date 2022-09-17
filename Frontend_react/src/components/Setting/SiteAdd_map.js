@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
 import SitePost from './SiteAdd_post';
 
-const Postcode = () => {
+const Sitemap = () => {
   const open = useDaumPostcodePopup();
 
   const handleComplete = (data) => {
@@ -39,4 +39,4 @@ const Postcode = () => {
 
 };
 
-export default Postcode;
+export default Sitemap;
