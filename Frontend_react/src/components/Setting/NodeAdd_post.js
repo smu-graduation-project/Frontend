@@ -44,13 +44,13 @@ const Register = () => {
     }
 
   const onhandlePost = async (data) => {
-    const { name, site, battery } = data;
-    const postData = { name, site, battery };
+    const { id, information, name, port, type } = data;
+    const postData = { id, information, name, port, type };
 
     // post
     await axios({
         method: 'post',
-        url: '/setting/addnode',
+        url:'http://220.149.31.104:9090/api/product/node/add/1',
         headers: {'Content-Type': 'multipart/form-data'}
     })
       .then(function (response) {
@@ -68,11 +68,13 @@ const Register = () => {
 
     const data = new FormData(e.currentTarget);
     const joinData = {
+      id: data.get('id'),
+      information: data.get('information'),
       name: data.get('name'),
-      site: data.get('site'),
-      battery: data.get('battery'),
+      port: data.get('port'),
+      type: data.get('type'),
     };
-    const { name, site, battery } = joinData;
+    const { id, information, name, port, type } = joinData;
 
     if (true) {
       onhandlePost(joinData);
@@ -97,14 +99,16 @@ const Register = () => {
           <Boxs component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <FormControl component="fieldset" variant="standard">
               <Grid container spacing={2}>
+
+                <FormHelperTexts>{nodenameState}</FormHelperTexts>
                 <Grid item xs={12}>
                   <TextField
                     required
                     fullWidth
-                    type="nodename"
-                    id="nodename"
-                    name="nodename"
-                    label="Node 명"
+                    type="id"
+                    id="id"
+                    name="id"
+                    label="id"
                     error={nodenameState !== '' || false}
                   />
                 </Grid>
@@ -113,10 +117,34 @@ const Register = () => {
                   <TextField
                     required
                     fullWidth
-                    type="site"
-                    id="site"
-                    name="site"
-                    label="소속 공장"
+                    type="information"
+                    id="information"
+                    name="information"
+                    label="information"
+                    error={nodenameState !== '' || false}
+                  />
+                </Grid>
+                <FormHelperTexts>{nodenameState}</FormHelperTexts>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    type="name"
+                    id="name"
+                    name="name"
+                    label="name"
+                    error={nodenameState !== '' || false}
+                  />
+                </Grid>
+                <FormHelperTexts>{nodenameState}</FormHelperTexts>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    type="port"
+                    id="port"
+                    name="port"
+                    label="port"
                     error={siteError !== '' || false}
                   />
                 </Grid>
@@ -125,9 +153,9 @@ const Register = () => {
                   <TextField
                     required
                     fullWidth
-                    id="battery"
-                    name="battery"
-                    label="소속 배터리"
+                    id="type"
+                    name="type"
+                    label="type"
                     error={batteryError !== '' || false}
                   />
                 </Grid>

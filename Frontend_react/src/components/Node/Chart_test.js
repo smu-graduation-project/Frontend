@@ -8,18 +8,23 @@ import CalendarMenu from './Calendar_menu';
 import axios from 'axios';
 import React, { useEffect, useState} from 'react';
 
-var port=1;
+
 
 const ChartTemp = () => {
   const [data, setData] = useState('전송실패');
 
   const AxiosData = async() => {
-     axios.get("http://220.149.31.104:9090/api/formerData/temperature/list"+"/"+port,
+     await axios.get("http://220.149.31.104:9090/api/formerData/temperature/list"+"/"+1,
     {
       params: {
+        id : 1,
         startDate : "2022-01-01",
         endDate : "2022-02-01"
       }
+  //   headers: {
+  //   'Authorization': getCookie('access-token'),
+  //   'authorization-refresh': getCookie('refresh-token') 
+  // },
     })
       .then((response) => {
         const dataTemp = response.data.data.map((data) => {
