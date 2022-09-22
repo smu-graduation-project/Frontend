@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
 import SitePost from './SiteAdd_post';
 
-const Sitemap = () => {
+const SiteMap = () => {
   const open = useDaumPostcodePopup();
 
   const handleComplete = (data) => {
@@ -21,22 +21,24 @@ const Sitemap = () => {
     }
 
     console.log(fullAddress); // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
+    
   };
 
   const handleClick = () => {
     open({ onComplete: handleComplete });
+    
   };
 
   return (
-
+    
     <>
     <Button variant="outlined" onClick={handleClick}>주소 검색</Button>
-    <SitePost address={handleComplete.fullAddress} />
+    
     </>
-
+    
     )
     
 
 };
 
-export default Sitemap;
+export default SiteMap;

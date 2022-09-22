@@ -17,8 +17,12 @@ import {
 } from '@mui/material/';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import styled from 'styled-components';
-import SiteMap from './SiteAdd_map.js';
-import { cookies, setCookie, useCookies, getCookie } from "react-cookie";
+import CardContent from '@mui/material/CardContent';
+import Paper from '@mui/material/Paper';
+
+import Imageinsert from './BatteryAdd_img';
+import SiteList from './BatteryAdd_site';
+import Siteimg from './BatteryAdd_img';
 
 // mui의 css 우선순위가 높기때문에 important를 설정 - 실무하다 보면 종종 발생 우선순위 문제
 const FormHelperTexts = styled(FormHelperText)`
@@ -32,30 +36,41 @@ const Boxs = styled(Box)`
   padding-bottom: 40px !important;
 `;
 
-const SitePost = (props) => {
-  const theme = createTheme();
-  const [nodenameState, setnodenameState] = useState('');
-  const [nodenameError, setnodenameError] = useState('');
-  const [siteError, setsiteError] = useState('');
-  const [batteryError, setbatteryError] = useState('');
-  const [registerError, setregisterError] = useState('');
-  const history = useNavigate();
 
-  const handleClick = () => {
+const BatteryReg = () => {
+  const theme = createTheme();
+  const [batterynameState, setbatterynameState] = useState('');
+  const [batterynameError, setbatterynameError] = useState('');
+  const [typeState, settypeState] = useState('');
+  const [typeError, settypeError] = useState('');
+  const [infoState, setinfoState] = useState('');
+  const [infoError, setinfoError] = useState('');
+
+  const [registerState, setregisterState] = useState('');
+  const [registerError, setregisterError] = useState('');
+
+  const history = useNavigate();
+  const open = Boolean(registerState);
+
+  const handleClick1 = () => {
     alert('등록 완료하였습니다.')
     }
 
+  const handleClick2 = () => {
+    alert('조회 완료하였습니다.');
+    <SiteList/>
+    }
+
   const onhandlePost = async (data) => {
-    const { name, type, address, information } = data;
-    const postData = { name, type, address, information };
+    const { name, type, information } = data;
+    const postData = { name, type, information };
+    
 
     // post
     await axios({
         method: 'post',
-        url: 'http://220.149.31.104:9090/api/product/site/add',
-        headers: {'Content-Type': 'multipart/form-data'},
-          'authorization': getCookie('access-token'),
-          'authorization-refresh': getCookie('refresh-token') 
+        url: 'http://220.149.31.104:9090/api/product/battery/add',
+        headers: {'Content-Type': 'multipart/form-data'}
     })
       .then(function (response) {
         console.log(response, '성공');
@@ -73,10 +88,9 @@ const SitePost = (props) => {
     const joinData = {
       name: data.get('name'),
       type: data.get('type'),
-      address: data.get('address'),
       information: data.get('information')
     };
-    const { name, type, address, information } = joinData;
+    const { name, type, information } = joinData;
 
     if (true) {
       onhandlePost(joinData);
@@ -87,16 +101,8 @@ const SitePost = (props) => {
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'left',
-          }}
-        >
-          <Typography component="h1" variant="h5">
-            Add Site
+          <Typography component="h1" variant="h4">
+            Add Battery
           </Typography>
           <Boxs component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <FormControl component="fieldset" variant="standard">
@@ -106,14 +112,14 @@ const SitePost = (props) => {
                   <TextField
                     required
                     fullWidth
-                    type="sitename"
-                    id="sitename"
-                    name="sitename"
-                    label="Site 명"
-                    error={nodenameState !== '' || false}
+                    type="name"
+                    id="name"
+                    name="name"
+                    label="name"
+                    error={batterynameState !== '' || false}
                   />
                 </Grid>
-                <FormHelperTexts>{batteryError}</FormHelperTexts>
+                <FormHelperTexts>{batterynameError}</FormHelperTexts>
 
                 <Grid item xs={12}>
                   <TextField
@@ -122,15 +128,10 @@ const SitePost = (props) => {
                     id="type"
                     name="type"
                     label="type"
-                    error={batteryError !== '' || false}
+                    error={typeState !== '' || false}
                   />
                 </Grid>
-                <FormHelperTexts>{batteryError}</FormHelperTexts>
-
-                <Grid item xs={12}>
-                  <SiteMap></SiteMap>
-                </Grid>
-                <FormHelperTexts>{siteError}</FormHelperTexts>
+                <FormHelperTexts>{typeError}</FormHelperTexts>
 
                 <Grid item xs={12}>
                   <TextField
@@ -139,28 +140,53 @@ const SitePost = (props) => {
                     id="information"
                     name="information"
                     label="information"
-                    error={batteryError !== '' || false}
+                    error={infoState !== '' || false}
                   />
                 </Grid>
-                <FormHelperTexts>{batteryError}</FormHelperTexts>
+                <FormHelperTexts>{infoError}</FormHelperTexts>
 
               </Grid>
               <Button
-                type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 size="large"
-                onClick={handleClick}
+                onClick={handleClick1}
               >
                 등록
               </Button>
             </FormControl>
           </Boxs>
-        </Box>
+        
+      
+
+      
+        <CssBaseline />
+          <Typography component="h1" variant="h4">
+            Insert Image
+          </Typography>
+          <Button
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            aria-label="more"
+            id="long-button"
+            aria-controls={open ? 'long-menu' : undefined}
+            aria-expanded={open ? 'true' : undefined}
+            aria-haspopup="true"
+            onClick={handleClick2}
+          >
+            Site 조회
+        </Button>
+          
+          
+          <SiteList></SiteList>
+          <Siteimg></Siteimg>
+        
       </Container>
     </ThemeProvider>
+
   );
 };
 
-export default SitePost;
+export default BatteryReg;

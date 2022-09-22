@@ -28,7 +28,7 @@ import ListSubheader from '@mui/material/ListSubheader';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-import Batterypost from './BatteryAdd_post.js';
+import Batterypost from './BatteryAdd_reg.js';
 
 const drawerWidth = 240;
 
