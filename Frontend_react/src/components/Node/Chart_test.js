@@ -8,23 +8,20 @@ import CalendarMenu from './Calendar_menu';
 import axios from 'axios';
 import React, { useEffect, useState} from 'react';
 
-
+var port=1;
 
 const ChartTemp = () => {
   const [data, setData] = useState('전송실패');
+  var AxiosData = null;
 
-  const AxiosData = async() => {
-     await axios.get("http://220.149.31.104:9090/api/formerData/temperature/list"+"/"+1,
+  try{
+  AxiosData = async() => {
+     axios.get("http://220.149.31.104:9090/api/formerData/temperature/list"+"/"+port,
     {
       params: {
-        id : 1,
         startDate : "2022-01-01",
         endDate : "2022-02-01"
       }
-  //   headers: {
-  //   'Authorization': getCookie('access-token'),
-  //   'authorization-refresh': getCookie('refresh-token') 
-  // },
     })
       .then((response) => {
         const dataTemp = response.data.data.map((data) => {
@@ -38,6 +35,10 @@ const ChartTemp = () => {
       setData([{}, ...dataTemp, {}]);
     });
   }
+    }catch(error) {
+      console.log("에러가 발생함");
+      data = "";
+    }
 
     useEffect(() => {
       AxiosData()

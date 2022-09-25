@@ -27,7 +27,7 @@ import Paper from '@mui/material/Paper';
 import Details_img from './Details_img.js';
 import Details from './Details';
 import Chart1 from './Chart_temperature';
-import Chart2 from './Chart_electric_power';
+
 import Chart3 from './Chart_voltage';
 
 
@@ -243,7 +243,7 @@ const MiniDrawer = (props) => {
                     height: 240,
                   }}
                 >
-                  <Chart1 />
+                  
                 </Paper>
               </Grid>
               <div>　</div>
@@ -257,7 +257,7 @@ const MiniDrawer = (props) => {
                     height: 240,
                   }}
                 >
-                  <Chart2 />
+                  
                 </Paper>
               </Grid>
               <div>　</div>

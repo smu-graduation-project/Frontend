@@ -26,9 +26,10 @@ import Paper from '@mui/material/Paper';
 
 import Details_img from './Details_img.js';
 import Details from './Details';
-import Chart1 from './Chart_test';
-import Chart2 from './Chart_electric_power';
-import Chart3 from './Chart_voltage';
+
+import NodeTab_Temp from '../Battery/Site1_battery/NodeTab_Temp.js';
+import NodeTab_Elec from '../Battery/Site1_battery/NodeTab_Elec.js';
+import NodeTab_Volt from '../Battery/Site1_battery/NodeTab_Volt.js';
 
 import axios from 'axios';
 
@@ -100,7 +101,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const MiniDrawer = (props) => {
+const MiniDrawer = ({name, url, nodePort}) => {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
   
@@ -221,7 +222,7 @@ const MiniDrawer = (props) => {
                   >
                       <Details_img />
                     </Paper>
-                    <div>　</div>
+                    <div> </div>
                     <Paper
                     sx={{
                       p: 2,
@@ -235,50 +236,14 @@ const MiniDrawer = (props) => {
                   
                 </Paper>
               </Grid>
+              <NodeTab_Temp name="TempChart" url="" nodePort={1} />
               <div>　</div>
+              <NodeTab_Elec name="ElecChart" url="" nodePort={1} />
               
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Chart1 />
-                </Paper>
-              </Grid>
               <div>　</div>
-
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Chart2 />
-                </Paper>
-              </Grid>
+              <NodeTab_Volt name="VoltChart" url="" nodePort={1} />
+              
               <div>　</div>
-
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Chart3 />
-                </Paper>
-              </Grid>
-              <div>　</div>
-
           </Box>
         </Box>
       </div>

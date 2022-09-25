@@ -98,9 +98,9 @@ export default function Site1_battery() {
 
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
-              <Tab label="Temperature" {...a11yProps(0)} />
-              <Tab label="Electric Power" {...a11yProps(1)} />
-              <Tab label="Voltage" {...a11yProps(2)} />
+              <Tab label="List" {...a11yProps(0)} />
+              {/*<Tab label="Electric Power" {...a11yProps(1)} />
+              <Tab label="Voltage" {...a11yProps(2)} />*/}
             </Tabs>
           </Box>
 
@@ -112,16 +112,12 @@ export default function Site1_battery() {
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240,
+                height: 100,
               }}
             >
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                 Battery 1 <Button href="/site1/battery1">상세 정보</Button>
-                </Typography>
-
-                <Typography gutterBottom variant="h9" component="div">
-                .......................온도 차트
                 </Typography>
               </CardContent>
             </Paper>
@@ -134,7 +130,7 @@ export default function Site1_battery() {
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240,
+                height: 100,
               }}
             >
               <CardContent>
@@ -152,7 +148,7 @@ export default function Site1_battery() {
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240,
+                height: 100,
               }}
             >
               <CardContent>
@@ -170,7 +166,7 @@ export default function Site1_battery() {
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240,
+                height: 100,
               }}
             >
               <CardContent>
@@ -191,16 +187,14 @@ export default function Site1_battery() {
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240,
+                height: 100,
               }}
             >
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                Battery 1
+                Battery 1 <Button href="/site1/battery1">상세 정보</Button>
                 </Typography>
-                <Typography gutterBottom variant="h9" component="div">
-                .......................전력 차트
-                </Typography>
+                
               </CardContent>
             </Paper>
           </Grid>
@@ -212,7 +206,7 @@ export default function Site1_battery() {
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240,
+                height: 100,
               }}
             >
               <CardContent>
@@ -230,7 +224,7 @@ export default function Site1_battery() {
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240,
+                height: 100,
               }}
             >
               <CardContent>
@@ -248,7 +242,7 @@ export default function Site1_battery() {
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240,
+                height: 100,
               }}
             >
               <CardContent>
@@ -269,15 +263,12 @@ export default function Site1_battery() {
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240,
+                height: 100,
               }}
             >
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                Battery 1
-                </Typography>
-                <Typography gutterBottom variant="h9" component="div">
-                .......................전압 차트
+                Battery 1 <Button href="/site1/battery1">상세 정보</Button>
                 </Typography>
               </CardContent>
             </Paper>
@@ -290,7 +281,7 @@ export default function Site1_battery() {
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240,
+                height: 100,
               }}
             >
               <CardContent>
@@ -308,7 +299,7 @@ export default function Site1_battery() {
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240,
+                height: 100,
               }}
             >
               <CardContent>
@@ -326,7 +317,7 @@ export default function Site1_battery() {
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240,
+                height: 100,
               }}
             >
               <CardContent>
