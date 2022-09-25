@@ -57,7 +57,7 @@ const Map = () => {
         <div>
            <div 
                 id="map" style={{
-                    width:"600px",
+                    width:"1400px",
                     height:"550px",
                     right: "65px",
                     borderRadius: "30px"

@@ -17,7 +17,7 @@ import {
 } from '@mui/material/';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import styled from 'styled-components';
-import SiteMap from './SiteAdd_map.js';
+import SiteMap from './SiteAdd_map';
 import { cookies, setCookie, useCookies, getCookie } from "react-cookie";
 
 // mui의 css 우선순위가 높기때문에 important를 설정 - 실무하다 보면 종종 발생 우선순위 문제
@@ -39,6 +39,9 @@ const SitePost = (props) => {
   const [siteError, setsiteError] = useState('');
   const [batteryError, setbatteryError] = useState('');
   const [registerError, setregisterError] = useState('');
+  
+  const [add,setAdd]=useState('')
+
   const history = useNavigate();
 
   const handleClick = () => {
@@ -82,6 +85,10 @@ const SitePost = (props) => {
       onhandlePost(joinData);
     }
   };
+
+  const recieveadd = (e) => {
+    setAdd(e);
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -128,7 +135,17 @@ const SitePost = (props) => {
                 <FormHelperTexts>{batteryError}</FormHelperTexts>
 
                 <Grid item xs={12}>
-                  <SiteMap></SiteMap>
+
+
+
+
+                  <SiteMap recieveadd={recieveadd()} />
+                  {/* <div> address: {props.address} </div> */}
+
+
+
+
+
                 </Grid>
                 <FormHelperTexts>{siteError}</FormHelperTexts>
 
@@ -145,6 +162,9 @@ const SitePost = (props) => {
                 <FormHelperTexts>{batteryError}</FormHelperTexts>
 
               </Grid>
+
+
+
               <Button
                 type="submit"
                 fullWidth

@@ -30,6 +30,7 @@ import TextField from '@mui/material/TextField';
 
 import Sitemap from './SiteAdd_map.js';
 import Sitepost from './SiteAdd_post.js';
+import SignUp from './map_test.js';
 
 const drawerWidth = 240;
 
@@ -211,9 +212,11 @@ const MiniDrawer = (props) => {
                   }}
                 >
                   <Sitepost></Sitepost>
+                 
                 </Paper>
               </Grid>
           </Box>
+          
         </Box>
     );
 }
