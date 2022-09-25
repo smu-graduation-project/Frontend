@@ -64,12 +64,6 @@ export default function NestedList() {
             </ListItemIcon>
             <Button href='/setting/addbattery'>Battery</Button>
           </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-            <SendIcon />
-            </ListItemIcon>
-            <Button href='/setting/addnode'>Node</Button>
-          </ListItemButton>
         </List>
       </Collapse>
     </List>

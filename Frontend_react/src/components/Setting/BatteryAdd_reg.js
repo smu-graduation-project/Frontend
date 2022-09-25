@@ -20,9 +20,10 @@ import styled from 'styled-components';
 import CardContent from '@mui/material/CardContent';
 import Paper from '@mui/material/Paper';
 
-import Imageinsert from './BatteryAdd_img';
-import SiteList from './BatteryAdd_site';
 import Siteimg from './BatteryAdd_img';
+import SiteMap from './SiteAdd_map';
+import SiteAccordion from './BatteryAdd_sitelist';
+import SiteList from './BatteryAdd_site';
 
 // mui의 css 우선순위가 높기때문에 important를 설정 - 실무하다 보면 종종 발생 우선순위 문제
 const FormHelperTexts = styled(FormHelperText)`
@@ -37,7 +38,9 @@ const Boxs = styled(Box)`
 `;
 
 
-const BatteryReg = () => {
+const BatteryReg = (props) => {
+  const theme = createTheme();
+  /*
   const theme = createTheme();
   const [batterynameState, setbatterynameState] = useState('');
   const [batterynameError, setbatterynameError] = useState('');
@@ -45,7 +48,7 @@ const BatteryReg = () => {
   const [typeError, settypeError] = useState('');
   const [infoState, setinfoState] = useState('');
   const [infoError, setinfoError] = useState('');
-
+*/
   const [registerState, setregisterState] = useState('');
   const [registerError, setregisterError] = useState('');
 
@@ -55,22 +58,23 @@ const BatteryReg = () => {
   const handleClick1 = () => {
     alert('등록 완료하였습니다.')
     }
-
+/*
   const handleClick2 = () => {
     alert('조회 완료하였습니다.');
-    <SiteList/>
     }
-
+*/
   const onhandlePost = async (data) => {
-    const { name, type, information } = data;
-    const postData = { name, type, information };
+    const { name, type, information, siteId } = data;
+    const postData = { name, type, information, siteId };
     
 
     // post
     await axios({
         method: 'post',
         url: 'http://220.149.31.104:9090/api/product/battery/add',
-        headers: {'Content-Type': 'multipart/form-data'}
+        data: postData,
+        headers: {'Content-Type': 'multipart/form-data'},
+        params: {siteId}
     })
       .then(function (response) {
         console.log(response, '성공');
@@ -88,14 +92,20 @@ const BatteryReg = () => {
     const joinData = {
       name: data.get('name'),
       type: data.get('type'),
-      information: data.get('information')
+      information: data.get('information'),
+      siteId: data.get('siteId')
     };
-    const { name, type, information } = joinData;
+    const { name, type, information, siteId } = joinData;
 
-    if (true) {
+    if (name&&type&&information&&siteId) {
       onhandlePost(joinData);
     }
   };
+
+  const Wrightsite = (e) => {
+    if (e==true)
+      return React.createElement(e) ;
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -104,22 +114,38 @@ const BatteryReg = () => {
           <Typography component="h1" variant="h4">
             Add Battery
           </Typography>
+
+          <br></br>
+  
+          <SiteAccordion></SiteAccordion>
+
           <Boxs component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <FormControl component="fieldset" variant="standard">
               <Grid container spacing={2}>
                 
+              <Grid item xs={12}>
+                  <TextField
+                    required
+                    autoFocus
+                    fullWidth
+                    type="siteId"
+                    id= "siteId"
+                    name= "siteId"
+                    label='Site id값을 입력해주세요.'
+                  />
+                </Grid>
+                
                 <Grid item xs={12}>
                   <TextField
                     required
+                    autoFocus
                     fullWidth
                     type="name"
                     id="name"
                     name="name"
                     label="name"
-                    error={batterynameState !== '' || false}
                   />
                 </Grid>
-                <FormHelperTexts>{batterynameError}</FormHelperTexts>
 
                 <Grid item xs={12}>
                   <TextField
@@ -128,10 +154,9 @@ const BatteryReg = () => {
                     id="type"
                     name="type"
                     label="type"
-                    error={typeState !== '' || false}
                   />
                 </Grid>
-                <FormHelperTexts>{typeError}</FormHelperTexts>
+
 
                 <Grid item xs={12}>
                   <TextField
@@ -140,13 +165,12 @@ const BatteryReg = () => {
                     id="information"
                     name="information"
                     label="information"
-                    error={infoState !== '' || false}
                   />
                 </Grid>
-                <FormHelperTexts>{infoError}</FormHelperTexts>
 
               </Grid>
               <Button
+                type = "submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
@@ -165,22 +189,7 @@ const BatteryReg = () => {
           <Typography component="h1" variant="h4">
             Insert Image
           </Typography>
-          <Button
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            aria-label="more"
-            id="long-button"
-            aria-controls={open ? 'long-menu' : undefined}
-            aria-expanded={open ? 'true' : undefined}
-            aria-haspopup="true"
-            onClick={handleClick2}
-          >
-            Site 조회
-        </Button>
           
-          
-          <SiteList></SiteList>
           <Siteimg></Siteimg>
         
       </Container>

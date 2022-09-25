@@ -1,3 +1,5 @@
+/*
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -17,8 +19,10 @@ import {
 } from '@mui/material/';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import styled from 'styled-components';
-import SiteMap from './SiteAdd_map';
-import { cookies, setCookie, useCookies, getCookie } from "react-cookie";
+import CardContent from '@mui/material/CardContent';
+import Paper from '@mui/material/Paper';
+
+import Imageinsert from './BatteryAdd_img';
 
 // mui의 css 우선순위가 높기때문에 important를 설정 - 실무하다 보면 종종 발생 우선순위 문제
 const FormHelperTexts = styled(FormHelperText)`
@@ -32,16 +36,17 @@ const Boxs = styled(Box)`
   padding-bottom: 40px !important;
 `;
 
-const SitePost = (props) => {
+const Input = styled('input')({
+  display: 'none',
+});
+
+const BatteryPost = (props) => {
   const theme = createTheme();
   const [nodenameState, setnodenameState] = useState('');
   const [nodenameError, setnodenameError] = useState('');
   const [siteError, setsiteError] = useState('');
   const [batteryError, setbatteryError] = useState('');
   const [registerError, setregisterError] = useState('');
-  
-  const [add,setAdd]=useState('')
-
   const history = useNavigate();
 
   const handleClick = () => {
@@ -49,16 +54,14 @@ const SitePost = (props) => {
     }
 
   const onhandlePost = async (data) => {
-    const { name, type, address, information } = data;
-    const postData = { name, type, address, information };
+    const { name, type, information } = data;
+    const postData = { name, type, information };
 
     // post
     await axios({
         method: 'post',
-        url: 'http://220.149.31.104:9090/api/product/site/add',
-        headers: {'Content-Type': 'multipart/form-data'},
-          'authorization': getCookie('access-token'),
-          'authorization-refresh': getCookie('refresh-token') 
+        url: 'http://220.149.31.104:9090/api/product/battery/add',
+        headers: {'Content-Type': 'multipart/form-data'}
     })
       .then(function (response) {
         console.log(response, '성공');
@@ -76,34 +79,21 @@ const SitePost = (props) => {
     const joinData = {
       name: data.get('name'),
       type: data.get('type'),
-      address: data.get('address'),
       information: data.get('information')
     };
-    const { name, type, address, information } = joinData;
+    const { name, type, information } = joinData;
 
     if (true) {
       onhandlePost(joinData);
     }
   };
 
-  const recieveadd = (e) => {
-    setAdd(e);
-  }
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'left',
-          }}
-        >
-          <Typography component="h1" variant="h5">
-            Add Site
+          <Typography component="h1" variant="h4">
+            Add Battery
           </Typography>
           <Boxs component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <FormControl component="fieldset" variant="standard">
@@ -113,10 +103,10 @@ const SitePost = (props) => {
                   <TextField
                     required
                     fullWidth
-                    type="sitename"
-                    id="sitename"
-                    name="sitename"
-                    label="Site 명"
+                    type="name"
+                    id="name"
+                    name="name"
+                    label="name"
                     error={nodenameState !== '' || false}
                   />
                 </Grid>
@@ -135,19 +125,97 @@ const SitePost = (props) => {
                 <FormHelperTexts>{batteryError}</FormHelperTexts>
 
                 <Grid item xs={12}>
-
-
-
-
-                  <SiteMap recieveadd={recieveadd()} />
-                  {/* <div> address: {props.address} </div> */}
-
-
-
-
-
+                  <TextField
+                    required
+                    fullWidth
+                    id="information"
+                    name="information"
+                    label="information"
+                    error={batteryError !== '' || false}
+                  />
                 </Grid>
-                <FormHelperTexts>{siteError}</FormHelperTexts>
+                <FormHelperTexts>{batteryError}</FormHelperTexts>
+
+              </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                size="large"
+                onClick={handleClick}
+              >
+                등록
+              </Button>
+            </FormControl>
+          </Boxs>
+        
+      
+
+      
+        <CssBaseline />
+          <Typography component="h1" variant="h4">
+            Insert Image
+          </Typography>
+          <Boxs component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                size="large"
+                onClick={handleClick}
+              >
+                Site 조회
+              </Button>
+
+              <div> <mark> 여기에 site 한번 언급해주기 </mark> </div>
+
+              <label htmlFor="contained-button-file">
+              <Input accept="image/*" id="contained-button-file" multiple type="file"/>
+              <Button
+              type="submit" 
+              fullwidth 
+              variant="contained"  
+              sx={{ mt: 3, mb: 2 }}
+              size="large"
+              
+              >
+                  Image Upload
+              </Button>
+              </label>
+
+              <div component="h6" variant="h6" text-secondary text-centered >
+              미 지정시, 기본 이미지로 저장됩니다.
+              </div>
+             
+            <FormControl component="fieldset" variant="standard">
+              <Grid container spacing={2}>
+                
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    type="name"
+                    id="name"
+                    name="name"
+                    label="name"
+                    error={nodenameState !== '' || false}
+                  />
+                </Grid>
+                <FormHelperTexts>{batteryError}</FormHelperTexts>
+
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="type"
+                    name="type"
+                    label="type"
+                    error={batteryError !== '' || false}
+                  />
+                </Grid>
+                <FormHelperTexts>{batteryError}</FormHelperTexts>
 
                 <Grid item xs={12}>
                   <TextField
@@ -162,9 +230,6 @@ const SitePost = (props) => {
                 <FormHelperTexts>{batteryError}</FormHelperTexts>
 
               </Grid>
-
-
-
               <Button
                 type="submit"
                 fullWidth
@@ -177,10 +242,13 @@ const SitePost = (props) => {
               </Button>
             </FormControl>
           </Boxs>
-        </Box>
+        
       </Container>
     </ThemeProvider>
+
   );
 };
 
-export default SitePost;
+export default BatteryPost;
+
+*/
