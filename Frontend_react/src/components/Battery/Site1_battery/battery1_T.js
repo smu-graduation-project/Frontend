@@ -22,6 +22,10 @@ import NodeTab_Volt from './NodeTab_Volt';
 import NodeTab_RT from './NodeTab_RT';
 import MiniDrawer from '../../Node/node1';
 import NodeDet from '../../Node/node';
+
+
+
+import ApexCharts from 'apexcharts';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -94,7 +98,7 @@ export default function Site1_battery() {
             >
               <Button variant="contained">Battery 정보</Button>
               <Button variant="outlined">Battery 수정</Button>
-              <Button href='/setting/addnode' variant="outlined">Node 추가</Button>
+              
               <Button href='/setting/searchnode' variant="outlined">Node 검색</Button>
             </Stack>
           </Container>
@@ -112,11 +116,12 @@ export default function Site1_battery() {
 
 {/* 온도 탭 */}
           <TabPanel value={value} index={0}>
+
           
           <NodeTab_RT name="Node 1" url="" nodePort={1} />
           
           <div>　</div>
-
+              
           <NodeTab_RT name="Node 2" url="2" nodePort={2} />
 
           <div>　</div>

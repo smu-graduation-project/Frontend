@@ -16,6 +16,8 @@ import CardContent from '@mui/material/CardContent';
 import MiniDrawer from '../../Node/node1';
 import FullScreenDialog from '../../Node/node';
 
+
+
 function NodeTab_RT({name, url, nodePort}){
     const [temps, setTemps] = useState([]);
     const Temps = () => {

@@ -1,30 +1,27 @@
+import { Calendar } from 'react-date-range';
+import { Component } from 'react';
 import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import Box from '@mui/material/Box';
+import { DateRangePicker } from 'react-date-range';
 
-export default function BasicDateRangePicker() {
-  const [value, setValue] = React.useState([null, null]);
+import {useState} from 'react'
+import { DateRange } from 'react-date-range';
 
-  return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <DateRangePicker
-        startText="Check-in"
-        endText="Check-out"
-        value={value}
-        onChange={(newValue) => {
-          setValue(newValue);
-        }}
-        renderInput={(startProps, endProps) => (
-          <React.Fragment>
-            <TextField {...startProps} />
-            <Box sx={{ mx: 2 }}> to </Box>
-            <TextField {...endProps} />
-          </React.Fragment>
-        )}
+
+function Cal(){
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: null,
+      key: 'selection'
+    }
+  ]);
+  
+      <DateRange
+        editableDateInputs={true}
+        onChange={item => setState([item.selection])}
+        moveRangeOnFirstSelection={false}
+        ranges={state}
       />
-    </LocalizationProvider>
-  );
 }
+
+export default Cal;

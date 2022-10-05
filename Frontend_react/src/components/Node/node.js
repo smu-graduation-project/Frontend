@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -38,8 +39,21 @@ import NodeTab_Temp from '../Battery/Site1_battery/NodeTab_Temp.js';
 import NodeTab_Elec from '../Battery/Site1_battery/NodeTab_Elec.js';
 import NodeTab_Volt from '../Battery/Site1_battery/NodeTab_Volt.js';
 
-import Calendar_menu from './Calendar_menu.js';
+import 'react-date-range/dist/styles.css'; // main style file 
+import 'react-date-range/dist/theme/default.css'; // theme css file
+
+
+import { Calendar } from 'react-date-range';
+import { Component } from 'react';
+
+import { DateRangePicker } from 'react-date-range';
+
+import {useState} from 'react'
+import { DateRange } from 'react-date-range';
 import axios from 'axios';
+
+
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -47,6 +61,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function FullScreenDialog({name, nodePort}) {
   const [open, setOpen] = React.useState(false);
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: null,
+      key: 'selection'
+    }
+  ]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -118,9 +139,24 @@ export default function FullScreenDialog({name, nodePort}) {
        >
            <Details />
            <div>　 </div>
-            <Calendar_menu />
+          
            <div> 　 </div>
          </Paper>
+         <Paper 
+          sx={{
+            p: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            height: 350
+          }}>
+           <DateRange
+              editableDateInputs={true}
+              onChange={item => setState([item.selection])}
+              moveRangeOnFirstSelection={false}
+              ranges={state}
+              
+            />
+            </Paper>
        
      </Paper>
    </Grid>

@@ -64,8 +64,8 @@ const BatteryReg = (props) => {
     }
 */
   const onhandlePost = async (data) => {
-    const { name, type, information, siteId } = data;
-    const postData = { name, type, information, siteId };
+    const { name, type, information } = data;
+    const postData = { name, type, information };
     
 
     // post
@@ -73,8 +73,8 @@ const BatteryReg = (props) => {
         method: 'post',
         url: 'http://220.149.31.104:9090/api/product/battery/add',
         data: postData,
-        headers: {'Content-Type': 'multipart/form-data'},
-        params: {siteId}
+        headers: {'Content-Type': 'application/json'},
+        params: {siteId:1}
     })
       .then(function (response) {
         console.log(response, '성공');
@@ -93,19 +93,13 @@ const BatteryReg = (props) => {
       name: data.get('name'),
       type: data.get('type'),
       information: data.get('information'),
-      siteId: data.get('siteId')
     };
-    const { name, type, information, siteId } = joinData;
+    const { name, type, information} = joinData;
 
-    if (name&&type&&information&&siteId) {
+    if (name&&type&&information) {
       onhandlePost(joinData);
     }
   };
-
-  const Wrightsite = (e) => {
-    if (e==true)
-      return React.createElement(e) ;
-  }
 
   return (
     <ThemeProvider theme={theme}>

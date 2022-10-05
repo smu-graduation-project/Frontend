@@ -139,10 +139,10 @@ export default function Site1_battery() {
                 </Typography>
               </CardContent>
             </Paper>
-          </Grid>
+            </Grid>
           <div>　</div>
 
-          <Grid item xs={12} md={8} lg={9}>
+          {/*<Grid item xs={12} md={8} lg={9}>
             <Paper
               sx={{
                 p: 2,
@@ -176,7 +176,7 @@ export default function Site1_battery() {
               </CardContent>
             </Paper>
           </Grid>
-          <div>　</div>
+            <div>　</div>*/}
           </TabPanel>
 
 {/* 전력 탭 */}
