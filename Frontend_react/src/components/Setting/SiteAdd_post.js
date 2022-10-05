@@ -18,7 +18,6 @@ import {
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import styled from 'styled-components';
 import SiteMap from './SiteAdd_map';
-import { cookies, setCookie, useCookies, getCookie } from "react-cookie";
 
 // mui의 css 우선순위가 높기때문에 important를 설정 - 실무하다 보면 종종 발생 우선순위 문제
 const FormHelperTexts = styled(FormHelperText)`
@@ -57,8 +56,6 @@ const SitePost = (props) => {
         method: 'post',
         url: 'http://220.149.31.104:9090/api/product/site/add',
         headers: {'Content-Type': 'multipart/form-data'},
-          'authorization': getCookie('access-token'),
-          'authorization-refresh': getCookie('refresh-token') 
     })
       .then(function (response) {
         console.log(response, '성공');
@@ -86,9 +83,9 @@ const SitePost = (props) => {
     }
   };
 
-  const recieveadd = (e) => {
+  /*const recieveadd = (e) => {
     setAdd(e);
-  }
+  }*/
 
   return (
     <ThemeProvider theme={theme}>
@@ -139,7 +136,8 @@ const SitePost = (props) => {
 
 
 
-                  <SiteMap recieveadd={recieveadd()} />
+                  <SiteMap></SiteMap>
+                  {/*<SiteMap recieveadd={recieveadd()} /> */}
                   {/* <div> address: {props.address} </div> */}
 
 

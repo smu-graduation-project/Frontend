@@ -21,8 +21,8 @@ function NodeTab_Temp({name, nodePort}){
         axios.get("/api/formerData/temperature/list/"+nodePort,
         {
           params: {
-          startDate : "2022-01-01",
-          endDate : "2022-02-01"
+          startDate : "2022-02-01",
+          endDate : "2022-02-28"
         }
         })
           .then(response => {
@@ -67,7 +67,7 @@ function NodeTab_Temp({name, nodePort}){
                 }}
                 >
 
-                <LineChart width={1300} height={150} data={temps}
+                <LineChart width={1200} height={150} data={temps}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis fontSize={10} dataKey="date" />
